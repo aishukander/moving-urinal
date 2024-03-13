@@ -76,12 +76,10 @@ void Task1_senddata(void * pvParameters ){
 
 void Program() {
   //重複三次要求使用者靠近
-  for(int i = 0; i < 3; i++){   
-    if (cm >= 20 && cm <= 40) {    
-      digitalWrite(PLAYE, HIGH);
-      delay(500);
-      digitalWrite(PLAYE, LOW);      
-    }
+  for(int i = 0; i < 3 && cm >= 20 && cm <= 40; i++){      
+    digitalWrite(PLAYE, HIGH);
+    delay(500);
+    digitalWrite(PLAYE, LOW);      
     delay(1000);
     Ultrasound();
   }
@@ -106,11 +104,13 @@ void Program() {
 void advance() {
   Serial.println("靠近使用者");
   myStepper.step(stepsPerRevolution);
+  myStepper.step(stepsPerRevolution);
 }
 
 //小便斗後移函式
 void retreat() {
   Serial.println("離開使用者");
+  myStepper.step(-stepsPerRevolution);
   myStepper.step(-stepsPerRevolution);
 }
 
