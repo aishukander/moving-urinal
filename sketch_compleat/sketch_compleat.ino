@@ -8,7 +8,7 @@
 const String restroom = "現代大樓右側三樓半";
 const String number = "5號";
 const char* ssid     =  "s23u";
-const char* password =  "djsz9838&";
+const char* password =  "ttest113";
 const int stepsPerRevolution = 2048;
 int led_pin = 2;
 int TRIG_PIN = 4;
@@ -70,9 +70,7 @@ void Task1_senddata(void * pvParameters ){
     if(val < 800 && msg ==1){
       msg = 0;
     }
-    else{
-      delay(1);
-    }
+    delay(1);
   }
 }
 
@@ -148,6 +146,7 @@ void water_high(){
   if(msg == 0){  //假設此次故障還未通報就使用line通報
     LINE.notify(restroom + " 內的 " + number + " 小便斗出現故障");
     msg = 1;
+    Serial.println("已通報");
   }
   LEDFLASH();
 }
