@@ -7,8 +7,8 @@
 //定義接腳與所需參數
 const String restroom = "現代大樓右側三樓半";
 const String number = "5號";
-const char* ssid     =  "xxxxxxxx";
-const char* password =  "xxxxxxxx";
+const char* ssid     =  "s23u";
+const char* password =  "djsz9838&";
 const int stepsPerRevolution = 2048;
 int led_pin = 2;
 int TRIG_PIN = 4;
