@@ -76,7 +76,7 @@ void Task1_senddata(void * pvParameters ){
 
 void Program() {
   //重複三次要求使用者靠近
-  for(int i = 0; i < 3 && cm >= 20 && cm <= 40; i++){      
+  for(int i = 0; i < 3 && cm >= 40 && cm <= 50; i++){      
     digitalWrite(PLAYE, HIGH);
     delay(500);
     digitalWrite(PLAYE, LOW);      
@@ -85,13 +85,13 @@ void Program() {
   }
   delay(100);
   //三次後未靠近則將小便斗前移
-  if (cm >= 20 && cm <= 40) {
+  if (cm >= 40 && cm <= 50) {
     advance();
     Ultrasound();
-    if (cm > 50) {  //如距離現已大於50cm則移回小便斗
+    if (cm > 60) {  //如距離現已大於50cm則移回小便斗
       retreat();
     } else {
-      while (cm <= 50) {  // 等待距離大於50cm就移回小便斗
+      while (cm <= 60) {  // 等待距離大於50cm就移回小便斗
         delay(100);
         Ultrasound();
       }
@@ -104,13 +104,11 @@ void Program() {
 void advance() {
   Serial.println("靠近使用者");
   myStepper.step(stepsPerRevolution);
-  myStepper.step(stepsPerRevolution);
 }
 
 //小便斗後移函式
 void retreat() {
   Serial.println("離開使用者");
-  myStepper.step(-stepsPerRevolution);
   myStepper.step(-stepsPerRevolution);
 }
 
